@@ -39,7 +39,10 @@ dependencies:
   flutter_svg: ^0.22.0
   provider: ^6.0.0
   intl: ^0.17.0 # format datetime: https://pub.dev/documentation/intl/latest/intl/DateFormat-class.html
-
+  shared_preferences: ^2.1.1
+  rxdart: ^0.27.7 # bloc
+  dio: ^5.1.2 # http client
+#  flutter_money_formatter: ^0.8.3
 
 dev_dependencies:
   flutter_test:

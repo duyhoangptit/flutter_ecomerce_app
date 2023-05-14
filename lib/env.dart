@@ -9,12 +9,12 @@ abstract class AppEnvironment {
     _environment = env;
     switch(env) {
       case Environment.dev: {
-        baseApiUrl = "";
+        baseApiUrl = "http://localhost:3056";
         title = "UAT";
         break;
       }
       case Environment.prod: {
-        baseApiUrl = "";
+        baseApiUrl = "http://localhost:8080";
         title = "PROD";
         break;
       }

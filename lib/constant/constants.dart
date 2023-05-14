@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecomerce_app/size_config.dart';
 
+class SPrefCache {
+  static const KEY_TOKEN = 'key_token';
+  static const API_KEY = 'api_key';
+}
+
 const kPrimaryColor = Color(0xFFFF7643);
 const kPrimaryLightColor = Color(0xFFFFECDF);
 const kPrimaryGradientColor =
