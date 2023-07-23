@@ -13,7 +13,7 @@ class SignInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageContainer(
-      title: Text("Sign In"),
+      title: "Sign In",
       di: [
         Provider.value(value: AuthService),
         ProxyProvider<AuthService, AuthRepo>(update: (context, authService, previous)=>
@@ -21,6 +21,7 @@ class SignInScreen extends StatelessWidget {
         ),
       ],
       bloc: [],
+      actions: [],
       child: const Body(),
     );
   }

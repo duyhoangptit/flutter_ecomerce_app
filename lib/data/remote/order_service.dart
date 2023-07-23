@@ -4,11 +4,11 @@ import 'package:flutter_ecomerce_app/network/api_client.dart';
 class OrderService {
 
   Future<Response> checkoutReview(body) {
-    return ApiClient.instance.dio.get('/api/v1/order/review', body);
+    return ApiClient.instance.dio.get('/api/v1/order/review', data: body);
   }
 
   Future<Response> createOrder(body) {
-    return ApiClient.instance.dio.get('/api/v1/order', body);
+    return ApiClient.instance.dio.get('/api/v1/order', data: body);
   }
 
 }

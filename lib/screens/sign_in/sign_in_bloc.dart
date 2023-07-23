@@ -18,9 +18,9 @@ class SignInBloc extends BaseBloc with ChangeNotifier {
 
   final _userSubject = BehaviorSubject<User>();
 
-  AuthRepo _authRepo;
+  late AuthRepo _authRepo;
 
-  SignInBloc({@required AuthRepo authRepo}) {
+  SignInBloc({required AuthRepo authRepo}) {
     _authRepo = authRepo;
     validateForm();
   }
@@ -28,7 +28,7 @@ class SignInBloc extends BaseBloc with ChangeNotifier {
   var emailValidation = StreamTransformer<String, String>.fromHandlers(
       handleData: (email, sink) {
         if (Validation.isEmailValid(email)) {
-          sink.add(null);
+          sink.add('');
           return;
         }
         sink.add("Email invalid");
@@ -37,38 +37,38 @@ class SignInBloc extends BaseBloc with ChangeNotifier {
   var passValidation = StreamTransformer<String, String>.fromHandlers(
       handleData: (pass, sink) {
         if (Validation.isPassValid(pass)) {
-          sink.add(null);
+          sink.add('');
           return;
         }
         sink.add("Password invalid");
       });
 
   Stream<String> get emailStream =>
-      _emailSubject.stream.transForm(emailValidation);
+      _emailSubject.stream.transform(emailValidation);
 
   Sink<String> get emailSink => _emailSubject.sink;
 
   Stream<String> get passStream =>
-      _passSubject.stream.transForm(passValidation);
+      _passSubject.stream.transform(passValidation);
 
   Sink<String> get passSink => _passSubject.sink;
 
-  Stream<User> get btnStream => _btnSubject.stream;
+  Stream<bool> get btnStream => _btnSubject.stream;
 
-  Sink<String> get btnSink => _btnSubject.sink;
+  Sink<bool> get btnSink => _btnSubject.sink;
 
   Stream<User> get userStream => _userSubject.stream;
 
-  Sink<String> get userSink => _userSubject.sink;
+  Sink<User> get userSink => _userSubject.sink;
 
   validateForm() {
-    Rx.combineLatest2({
+    Rx.combineLatest2(
       _emailSubject,
       _passSubject,
           (email, pass) {
-        return Validation.isEmailValid(email) && Validation.isPassValid(pass)
+        return Validation.isEmailValid(email) && Validation.isPassValid(pass);
       }
-    }).listen((enable) {
+    ).listen((enable) {
       btnSink.add(enable);
     });
   }
@@ -88,15 +88,15 @@ class SignInBloc extends BaseBloc with ChangeNotifier {
 
     Future.delayed(Duration(seconds: 6), () {
       SignInEvent e = event as SignInEvent;
-      _authRepo.signIn(email, pass).then((value) => {
-      processEventSink.add(SignInSuccessEvent(value));
+      _authRepo.signIn(e.email, e.pass).then((value) => {
+      processEventSink.add(SignInSuccessEvent(value))
       },
-          error: (e) {
-            btnSink.add(false); // khi co ket qua thi enable btn sign in
-            loadingSink.add(false); // hide loading
-            processEventSink.add(SignInFailEvent(e.toString()));
-          });
-    })
+      onError: (e) {
+        btnSink.add(false); // khi co ket qua thi enable btn sign in
+        loadingSink.add(false); // hide loading
+        processEventSink.add(SignInFailEvent(e.toString()));
+      });
+    });
   }
 
   @override

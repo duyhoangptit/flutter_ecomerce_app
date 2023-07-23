@@ -4,7 +4,7 @@ class Discount {
   String accessToken;
   String refreshToken;
 
-  Discount({this.name, this.email, this.accessToken, this.refreshToken});
+  Discount({required this.name, required this.email, required this.accessToken, required this.refreshToken});
 
   factory Discount.fromJson(Map<String, dynamic> map) {
     return Discount(

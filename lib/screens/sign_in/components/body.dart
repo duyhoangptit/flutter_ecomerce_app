@@ -8,10 +8,12 @@ import 'package:flutter_ecomerce_app/size_config.dart';
 import 'package:flutter_ecomerce_app/base/base_event.dart';
 import 'package:flutter_ecomerce_app/event/signin_success_event.dart';
 
+import '../../../event/signin_fail_event.dart';
+
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
 
-  handleEvent(BaseEvent event) {
+  handleEvent(BuildContext context, BaseEvent event) {
     if (event is SignInSuccessEvent) {
       Navigator.pushReplacementNamed(context, '/home');
       return;
@@ -22,7 +24,7 @@ class Body extends StatelessWidget {
         content: Text(event.errMessage),
         backgroundColor: Colors.red,
       );
-      Scaffold.of(context).showSnackBar(snackBar);
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }
 

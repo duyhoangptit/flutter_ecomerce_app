@@ -4,7 +4,7 @@ class Order {
   String accessToken;
   String refreshToken;
 
-  Order({this.name, this.email, this.accessToken, this.refreshToken});
+  Order({required this.name, required this.email, required this.accessToken, required this.refreshToken});
 
   factory Order.fromJson(Map<String, dynamic> map) {
     return Order(

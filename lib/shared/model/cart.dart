@@ -4,7 +4,7 @@ class Cart {
   String accessToken;
   String refreshToken;
 
-  Cart({this.name, this.email, this.accessToken, this.refreshToken});
+  Cart({required this.name, required this.email, required this.accessToken, required this.refreshToken});
 
   factory Cart.fromJson(Map<String, dynamic> map) {
     return Cart(

@@ -4,7 +4,7 @@ class User {
   String accessToken;
   String refreshToken;
 
-  User({this.name, this.email, this.accessToken, this.refreshToken});
+  User({required this.name, required this.email, required this.accessToken, required this.refreshToken});
 
   factory User.fromJson(Map<String, dynamic> map) {
     return User(

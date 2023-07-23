@@ -4,7 +4,7 @@ class Product {
   String accessToken;
   String refreshToken;
 
-  Product({this.name, this.email, this.accessToken, this.refreshToken});
+  Product({required this.name, required this.email, required this.accessToken, required this.refreshToken});
 
   factory Product.fromJson(Map<String, dynamic> map) {
     return Product(

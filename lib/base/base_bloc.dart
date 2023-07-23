@@ -1,3 +1,7 @@
+import 'dart:async';
+
+import 'package:flutter/cupertino.dart';
+
 import 'base_event.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -8,7 +12,7 @@ abstract class BaseBloc {
 
   Sink<BaseEvent> get event => _eventStreamController.sink;
 
-  Stream<BaseEvent> get loadingStream => _loadingStreamController.stream;
+  Stream<bool> get loadingStream => _loadingStreamController.stream;
   Sink<bool> get loadingSink => _loadingStreamController.sink;
 
   Stream<BaseEvent> get processEventStream => _processEventSubject.stream;
@@ -21,7 +25,7 @@ abstract class BaseBloc {
       }
 
       dispatchEvent(event);
-    })
+    });
   }
 
   void dispatchEvent(BaseEvent event);

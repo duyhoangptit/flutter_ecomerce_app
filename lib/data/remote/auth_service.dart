@@ -9,7 +9,7 @@ class AuthService {
 
   Future<Response> signUp(name, email, password, msisdn) {
     return ApiClient.instance.dio
-        .post('/api/v1/auth/register', data: {'name': name, 'email': email, 'password': pass, 'msisdn': msisdn});
+        .post('/api/v1/auth/register', data: {'name': name, 'email': email, 'password': password, 'msisdn': msisdn});
   }
 
   Future<Response> logout() {
@@ -19,7 +19,7 @@ class AuthService {
 
   Future<Response> getRefreshToken(refreshToken) {
     return ApiClient.instance.dio
-        .post('/api/v1/auth/refresh-token', options: {
+        .post('/api/v1/auth/refresh-token', data: {
           'refresh-token': refreshToken
     });
   }

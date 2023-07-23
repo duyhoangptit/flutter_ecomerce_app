@@ -3,15 +3,15 @@ import 'package:flutter_ecomerce_app/network/api_client.dart';
 
 class CartService {
   Future<Response> addItemToCart(body) {
-    return ApiClient.instance.dio.post('/api/v1/cart', body);
+    return ApiClient.instance.dio.post('/api/v1/cart', data: body);
   }
 
   Future<Response> getItemInCart(String userId) {
-    return ApiClient.instance.dio.post('/api/v1/cart?userId=' + userId);
+    return ApiClient.instance.dio.post('/api/v1/cart', queryParameters: {userId: userId});
   }
 
   Future<Response> updateItemInCart(String cartId) {
-    return ApiClient.instance.dio.put('/api/v1/cart/' + cartId);
+    return ApiClient.instance.dio.put('/api/v1/cart/$cartId');
   }
 
   Future<Response> deleteItemIn() {
