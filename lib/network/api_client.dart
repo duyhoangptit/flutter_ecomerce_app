@@ -14,10 +14,10 @@ class ApiClient {
     _dio.interceptors
         .add(InterceptorsWrapper(onRequest: (Options myOption) async {
       var token = await SPref.instance.get(SPrefCache.KEY_TOKEN);
-      var key = await SPref.instance.get(SPrefCache.API_KEY);
       if (token != null) {
         myOption.headers["Authorization"] = "Bearer " + token;
       }
+      var key = await SPref.instance.get(SPrefCache.API_KEY);
       if (key != null) {
         myOption.headers["x-api-key"] = key;
       }
@@ -26,6 +26,10 @@ class ApiClient {
     }));
   }
   static final ApiClient instance = ApiClient._internal();
+
+  static final newDio() {
+    return ApiClient.instance.dio;
+}
 
   Dio get dio => _dio;
 }

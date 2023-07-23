@@ -5,9 +5,26 @@ import 'package:flutter_ecomerce_app/constant/constants.dart';
 import 'package:flutter_ecomerce_app/screens/sign_in/components/sign_in_form.dart';
 import 'package:flutter_ecomerce_app/screens/sign_up/sign_up_screen.dart';
 import 'package:flutter_ecomerce_app/size_config.dart';
+import 'package:flutter_ecomerce_app/base/base_event.dart';
+import 'package:flutter_ecomerce_app/event/signin_success_event.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
+
+  handleEvent(BaseEvent event) {
+    if (event is SignInSuccessEvent) {
+      Navigator.pushReplacementNamed(context, '/home');
+      return;
+    }
+
+    if (event is SignInFailEvent) {
+      final snackBar = SnackBar(
+        content: Text(event.errMessage),
+        backgroundColor: Colors.red,
+      );
+      Scaffold.of(context).showSnackBar(snackBar);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

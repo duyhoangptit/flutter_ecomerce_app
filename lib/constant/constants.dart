@@ -4,6 +4,8 @@ import 'package:flutter_ecomerce_app/size_config.dart';
 class SPrefCache {
   static const KEY_TOKEN = 'key_token';
   static const API_KEY = 'api_key';
+  static const ACCESS_TOKEN = 'access_token';
+  static const REFRESH_TOKEN = 'refresh_token';
 }
 
 const kPrimaryColor = Color(0xFFFF7643);
