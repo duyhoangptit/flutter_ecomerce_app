@@ -10,7 +10,7 @@ class ProductService {
 
   Future<Response> searchProducts(String keySearch) {
     return ApiClient.instance.dio
-        .get('/api/v1/product/search/' + keySearch);
+        .get('/api/v1/product/search/$keySearch');
   }
 
 }

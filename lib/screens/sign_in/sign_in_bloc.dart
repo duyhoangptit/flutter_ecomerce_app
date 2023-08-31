@@ -86,7 +86,7 @@ class SignInBloc extends BaseBloc with ChangeNotifier {
     btnSink.add(false); //Khi bắt đầu call api thì disable nút sign-in
     loadingSink.add(true); // show loading
 
-    Future.delayed(Duration(seconds: 6), () {
+    Future.delayed(const Duration(seconds: 6), () {
       SignInEvent e = event as SignInEvent;
       _authRepo.signIn(e.email, e.pass).then((value) => {
       processEventSink.add(SignInSuccessEvent(value))
@@ -102,8 +102,6 @@ class SignInBloc extends BaseBloc with ChangeNotifier {
   @override
   void dispose() {
     super.dispose();
-    print('SignIn close');
-
     _emailSubject.close();
     _passSubject.close();
     _btnSubject.close();

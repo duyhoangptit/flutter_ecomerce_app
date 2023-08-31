@@ -54,7 +54,7 @@ class ApiClient {
           data: jsonEncode(
               {"refresh_token": refreshToken}))
           .then((value) async {
-        if (value?.statusCode == 201) {
+        if (value.statusCode == 201) {
           //get new tokens ...
           print("access token$token");
           print("refresh token$refreshToken");

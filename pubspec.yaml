@@ -42,6 +42,7 @@ dependencies:
   shared_preferences: ^2.1.1
   rxdart: ^0.27.7 # bloc
   dio: ^5.1.2 # http client
+  flutter_spinkit: ^5.2.0
 #  flutter_money_formatter: ^0.8.3
 
 dev_dependencies:

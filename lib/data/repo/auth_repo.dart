@@ -20,7 +20,7 @@ class AuthRepo {
       SPref.instance.set(SPrefCache.ACCESS_TOKEN, userData.accessToken);
       // complete
       c.complete(userData);
-    } on DioError {
+    } on DioException {
       c.completeError('Đăng nhập thất bại');
     } catch(e) {
       c.completeError(e);
@@ -38,8 +38,25 @@ class AuthRepo {
       SPref.instance.set(SPrefCache.ACCESS_TOKEN, userData.accessToken);
       // complete
       c.complete(userData);
-    } on DioError {
+    } on DioException {
       c.completeError('Đăng ký thất bại');
+    } catch(e) {
+      c.completeError(e);
+    }
+    return c.future;
+  }
+
+  Future<User> refreshToken(String refreshToken) async {
+    var c = Completer<User>();
+    try {
+      var response = await _authService.getRefreshToken(refreshToken);
+      var userData = User.fromJson(response.data['data']);
+      SPref.instance.set(SPrefCache.REFRESH_TOKEN, userData.refreshToken);
+      SPref.instance.set(SPrefCache.ACCESS_TOKEN, userData.accessToken);
+      // complete
+      c.complete(userData);
+    } on DioException {
+      c.completeError('Get token from refresh token error');
     } catch(e) {
       c.completeError(e);
     }

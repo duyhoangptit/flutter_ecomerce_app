@@ -19,7 +19,6 @@ class MyApp extends StatelessWidget {
       title: AppEnvironment.title,
       debugShowCheckedModeBanner: AppEnvironment.environment == Environment.dev ? true: false,
       theme: theme(context),
-      // home: const SplashScreen(),
       initialRoute: SplashScreen.routeName,
       routes: routes,
     );

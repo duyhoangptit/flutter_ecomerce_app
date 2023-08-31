@@ -10,7 +10,7 @@ class PageContainer extends StatelessWidget {
   final List<SingleChildWidget> di;
   final List<Widget> actions;
 
-  PageContainer({required this.title, required this.bloc, required this.di, required this.actions, required this.child});
+  PageContainer({super.key, required this.title, required this.bloc, required this.di, required this.actions, required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class NavigatorProvider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Container(
-        child: Stack(
+        child: const Stack(
           children: <Widget>[],
         ),
       ),

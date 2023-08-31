@@ -15,7 +15,7 @@ class SignInScreen extends StatelessWidget {
     return PageContainer(
       title: "Sign In",
       di: [
-        Provider.value(value: AuthService),
+        Provider.value(value: AuthService()),
         ProxyProvider<AuthService, AuthRepo>(update: (context, authService, previous)=>
             AuthRepo(authService: authService),
         ),

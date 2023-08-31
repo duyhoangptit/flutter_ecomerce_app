@@ -14,10 +14,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Shop Ecommerce',
       debugShowCheckedModeBanner: false,
       theme: theme(context),
-      // home: const SplashScreen(),
       initialRoute: SplashScreen.routeName,
       routes: routes,
     );

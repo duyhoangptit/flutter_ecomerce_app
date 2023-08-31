@@ -5,28 +5,9 @@ import 'package:flutter_ecomerce_app/constant/constants.dart';
 import 'package:flutter_ecomerce_app/screens/sign_in/components/sign_in_form.dart';
 import 'package:flutter_ecomerce_app/screens/sign_up/sign_up_screen.dart';
 import 'package:flutter_ecomerce_app/size_config.dart';
-import 'package:flutter_ecomerce_app/base/base_event.dart';
-import 'package:flutter_ecomerce_app/event/signin_success_event.dart';
-
-import '../../../event/signin_fail_event.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
-
-  handleEvent(BuildContext context, BaseEvent event) {
-    if (event is SignInSuccessEvent) {
-      Navigator.pushReplacementNamed(context, '/home');
-      return;
-    }
-
-    if (event is SignInFailEvent) {
-      final snackBar = SnackBar(
-        content: Text(event.errMessage),
-        backgroundColor: Colors.red,
-      );
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,14 +26,14 @@ class Body extends StatelessWidget {
                 "Welcome back",
                 style: headingStyle,
               ),
-              Text(
+              const Text(
                 "Sign in with your mail and password \nor continue with social media",
                 textAlign: TextAlign.center,
               ),
               SizedBox(
                 height: SizeConfig.screenHeight * 0.08,
               ),
-              SignInForm(),
+              const SignInForm(),
               SizedBox(
                 height: SizeConfig.screenHeight * 0.08,
               ),

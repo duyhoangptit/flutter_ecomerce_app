@@ -6,9 +6,9 @@ import 'base_event.dart';
 import 'package:rxdart/rxdart.dart';
 
 abstract class BaseBloc {
-  StreamController<BaseEvent> _processEventSubject = BehaviorSubject<BaseEvent>();
-  StreamController<bool> _loadingStreamController = StreamController<bool>();
-  StreamController<BaseEvent> _eventStreamController = StreamController<BaseEvent>();
+  final StreamController<BaseEvent> _processEventSubject = BehaviorSubject<BaseEvent>();
+  final StreamController<bool> _loadingStreamController = StreamController<bool>();
+  final StreamController<BaseEvent> _eventStreamController = StreamController<BaseEvent>();
 
   Sink<BaseEvent> get event => _eventStreamController.sink;
 

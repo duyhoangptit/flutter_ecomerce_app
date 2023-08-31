@@ -1,5 +1,4 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="vn.tiger.flutter_ecomerce_app">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
    <application
         android:label="flutter_ecomerce_app"
         android:name="${applicationName}"

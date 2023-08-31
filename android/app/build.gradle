@@ -60,6 +60,7 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+    namespace 'vn.tiger.flutter_ecomerce_app'
 }
 
 flutter {
